@@ -1,0 +1,134 @@
+﻿@page "/AllAdult"
+@using Models
+@using Assignment1DNP.Data
+@using Assignment1DNP.Persistance
+@inject IAdultData AdultData
+@inject NavigationManager NavigationManager
+
+
+
+
+<h3>Adult</h3>
+<div class="page">
+<p>Search by First Name:<input type="text" @oninput="@((arg) => Filter(arg))" 
+                               style="width: 200px"/>
+</p>
+ @if (adultsToShow == null)
+    {
+        <p>
+            <em>Loading..</em>
+        </p>
+    }
+    else if (!adultsToShow.Any())
+    {
+        <p>
+            <em>No Adult List. Please add some.</em>
+        </p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>HairColor</th>
+                <th>EyeColor</th>
+                <th>Age</th>
+                <th>Weight</th>
+                <th>Height</th>
+                <th>Sex</th>
+                <th>JobTitle</th>
+                <th>Salary</th>
+                <th>Remove</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (Adult item in adultsToShow)
+                        {
+                            <tr>
+            
+                                <td>@item.Id</td>
+                                <td>@item.FirstName</td>
+                                <td>@item.LastName</td>
+                                <td>@item.HairColor</td>
+                                <td>@item.EyeColor</td>
+                                <td>@item.Age</td>
+                                <td>@item.Weight</td>
+                                <td>@item.Height</td>
+                                <td>@item.Sex</td>
+                                <td>@item.JobTitle</td>
+                                <td>@item.Salary</td>
+                                <td>
+                                    <button @onclick="@(() => RemoveAdult(item.Id))">
+                                        <i class="oi oi-trash" style="color:red"/>
+                                    </button> </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                }
+            
+            </div> 
+
+@code {
+    private IList<Adult> adults;
+    private IList<Adult> adultsToShow;
+    
+    
+    private void Filter(ChangeEventArgs changeEventArgs)
+    {
+        string filterByName = null;
+        try
+        {
+            filterByName = changeEventArgs.Value?.ToString();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        if (filterByName != null && !filterByName.Equals(""))
+        {
+            adultsToShow =adults.Where(t => t.FirstName.Contains(filterByName)).ToList();
+        }
+        else
+        {
+            adultsToShow = adults;
+        }
+    }
+
+    /*private void Filter(ChangeEventArgs changeEventArgs)
+    {
+        string filterByName = changeEventArgs.Value.ToString();
+        if (filterByName != "")
+        {
+            adultToShow = adults.Where(t => t.FirstName.ToLower().StartsWith(filterByName.ToLower())
+                                                || t.LastName.ToLower().StartsWith(filterByName.ToLower())).ToList();
+        }
+        else
+        {
+            adultToShow = adults;
+        }
+    }*/
+
+    protected override async Task OnInitializedAsync()
+    {
+        adults = AdultData.getAdults();
+        adultsToShow = adults;
+    }
+    private void RemoveAdult(int adultId)
+    {
+        Adult adultToRemove = adults.First(t => t.Id == adultId);
+        //FileContext.RemoveAdult(adultId);
+        adults.Remove(adultToRemove);
+        adultsToShow.Remove(adultToRemove);
+    }
+
+    private void EditAdult(int Id)
+    {
+        NavigationManager.NavigateTo($"EditAdult/{Id}");
+    }
+    
+}
