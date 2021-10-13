@@ -36,10 +36,10 @@ namespace Assignment1DNP
             services.AddScoped<IUserService, InMomeryUserService>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
-            services.AddAuthorization(options =>
+           /* services.AddAuthorization(options =>
             {
                 options.AddPolicy("Login", a => a.RequireAuthenticatedUser().RequireClaim("SecurityLevel","0"));
-            });
+            });*/
         }
         
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

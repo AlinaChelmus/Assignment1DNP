@@ -75,6 +75,7 @@ namespace Assignment1DNP.Authentication
         ClaimsIdentity identity = new ClaimsIdentity(claims, "apiauth_type");
         return identity;
     }
+   
 }
 
 }

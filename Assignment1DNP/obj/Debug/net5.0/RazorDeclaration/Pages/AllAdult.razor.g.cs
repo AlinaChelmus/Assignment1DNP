@@ -112,7 +112,7 @@ using Assignment1DNP.Persistance;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 75 "C:\Users\alina\RiderProjects\Assignment1DNP\Assignment1DNP\Pages\AllAdult.razor"
+#line 79 "C:\Users\alina\RiderProjects\Assignment1DNP\Assignment1DNP\Pages\AllAdult.razor"
        
     private IList<Adult> adults;
     private IList<Adult> adultsToShow;

@@ -48,7 +48,7 @@ namespace Assignment1DNP.Persistance
 
         public IList<Adult> getAdults()
         {
-            IList<Models.Adult> tmp = new List<Adult>(Adults);
+            IList<Adult> tmp = new List<Adult>(Adults);
             return tmp;
         }
 

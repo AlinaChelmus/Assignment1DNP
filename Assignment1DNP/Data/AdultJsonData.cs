@@ -19,7 +19,7 @@ namespace Assignment1DNP.Data
         {
             if (!File.Exists(adultFile))
             {
-                Seed();
+                //Seed();
                 WriteAdultsToFile();
             }
             else
@@ -29,7 +29,7 @@ namespace Assignment1DNP.Data
             }
         }
         
-        private void Seed()
+       /* private void Seed()
         {
             Adult[] ad =
             {
@@ -44,8 +44,7 @@ namespace Assignment1DNP.Data
                     Weight = 70,
                     Height = 155,
                     Sex = "F",
-                    JobTitle = "Student",
-                    Salary = 8000
+
                 },
 
                 new Adult
@@ -60,11 +59,11 @@ namespace Assignment1DNP.Data
                     Height = 178,
                     Sex = "M",
                     JobTitle = null,
-                    Salary = 0
+                    
                 },
             };
             adults = ad.ToList();
-        }
+        }*/
         public IList<Adult> getAdults()
         {
             List<Adult> tmp = new List<Adult>(adults);
@@ -104,7 +103,7 @@ namespace Assignment1DNP.Data
             toUpdate.Height = adult.Height;
             toUpdate.Sex = adult.Sex;
             toUpdate.JobTitle = adult.JobTitle;
-            toUpdate.Salary = adult.Salary;
+            
             WriteAdultsToFile();
         }
 

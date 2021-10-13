@@ -125,7 +125,7 @@ using Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 45 "C:\Users\alina\RiderProjects\Assignment1DNP\Assignment1DNP\Pages\AddAdult.razor"
+#line 48 "C:\Users\alina\RiderProjects\Assignment1DNP\Assignment1DNP\Pages\AddAdult.razor"
        
    private Adult addNewAdultItem = new Adult();
 

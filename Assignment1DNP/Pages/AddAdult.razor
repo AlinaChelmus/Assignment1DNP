@@ -35,9 +35,12 @@
     <div class="form-group">Sex: <br/>
         <InputText @bind-Value="addNewAdultItem.Sex"/>
     </div>
-    @*<div class="form-group">Job title: <br/>
+    <div class="form-group">Job title: <br/>
         <InputText @bind-Value="addNewAdultItem.JobTitle.JobTitle"/>
-    </div>} *@
+    </div>} 
+     <div class="form-group">Job title: <br/>
+            <InputNumber @bind-Value="addNewAdultItem.JobTitle.Salary"/>
+        </div>} 
     <p class="actions"><button class="btn btn-outline-dark" type="submit">Create</button></p>
 </EditForm>
 
